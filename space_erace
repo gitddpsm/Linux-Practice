@@ -1,0 +1,4 @@
+#!/bin/bash
+# $1 - input $2
+
+tr -s '\n' < $1 |tr [:lower:] [:upper:] >$2
