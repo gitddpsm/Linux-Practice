@@ -27,5 +27,24 @@ nmap 7.91 from Maximiliano Bertacchini (maxiberta) installed
 
 3  .
 Настроить iptables: разрешить подключения только на 22-й и 80-й порты.
+
+  iptables -A INPUT -i lo -j ACCEPT
+  iptables -A INPUT -o lo -j ACCEPT
+  iptables -A OUTPUT -o lo -j ACCEPT
+  iptables -A INPUT -p icmp -j ACCEPT
+  iptables -A OUTPUT -p icmp -j ACCEPT
+  iptables -A OUTPUT -p TCP -m tcp --sport 32768:60999 -j ACCEPT
+  iptables -A OUTPUT -p UDP -m udp --sport 32768:60999 -j ACCEPT
+  iptables -A INPUT -p TCP -m state --state ESTABLISHED, RELATED -j ACCEPT
+  iptables -A INPUT -p TCP -m state --state ESTABLISHED,RELATED -j ACCEPT
+  iptables -A INPUT -p UDP -m state --state ESTABLISHED,RELATED -j ACCEPT
+  iptables -A INPUT -i ens18 -p tcp -m tcp --dport 25034 -j ACCEPT
+  iptables -A OUTPUT -o ens18 -p tcp -m tcp --sport 25034 -j ACCEPT
+  iptables -A INPUT -i ens18 -p tcp -m tcp --dport 80 -j ACCEPT
+  iptables -A OUTPUT -o ens18 -p tcp -m tcp --sport 80 -j ACCEPT
+  iptables -P INPUT DROP
+  iptables -P OUTPUT DROP
+
+
 4  .
 * Настроить проброс портов локально с порта 80 на порт 8080.
