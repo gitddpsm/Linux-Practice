@@ -38,8 +38,8 @@ nmap 7.91 from Maximiliano Bertacchini (maxiberta) installed
   iptables -A INPUT -p TCP -m state --state ESTABLISHED, RELATED -j ACCEPT
   iptables -A INPUT -p TCP -m state --state ESTABLISHED,RELATED -j ACCEPT
   iptables -A INPUT -p UDP -m state --state ESTABLISHED,RELATED -j ACCEPT
-  iptables -A INPUT -i ens18 -p tcp -m tcp --dport 25034 -j ACCEPT
-  iptables -A OUTPUT -o ens18 -p tcp -m tcp --sport 25034 -j ACCEPT
+  iptables -A INPUT -i ens18 -p tcp -m tcp --dport ***** -j ACCEPT
+  iptables -A OUTPUT -o ens18 -p tcp -m tcp --sport ***** -j ACCEPT
   iptables -A INPUT -i ens18 -p tcp -m tcp --dport 80 -j ACCEPT
   iptables -A OUTPUT -o ens18 -p tcp -m tcp --sport 80 -j ACCEPT
   iptables -P INPUT DROP
